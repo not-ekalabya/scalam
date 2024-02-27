@@ -17,7 +17,7 @@ export default function Toolbar(props: any) {
     }, [exportStyle])
 
     return (
-        <div className='flex justify-between flex-wrap gap-4 bg-gray-900/20 rounded-t-lg p-2'>
+        <div className='flex flex-wrap gap-4 bg-gray-900/20 rounded-t-lg p-2'>
             {
                 props.type !== 'list' && props.type !== 'two-segment' ?
                     <Select>

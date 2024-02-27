@@ -60,9 +60,12 @@ export default function List(props: { data: any, write: boolean, onChange: Funct
                             )
                         })
                     }
-                    <AdditionBar onChange={(event: any) => {
-                        setList({ ...list, value: [...list.value, event] })
-                    }} />
+                    {
+                        props.write ?
+                            <AdditionBar onChange={(event: any) => {
+                                setList({ ...list, value: [...list.value, event] })
+                            }} /> : null
+                    }
                 </div>
             </div>
         </>

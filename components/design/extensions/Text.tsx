@@ -20,9 +20,9 @@ export default function Text(props: { value: any, onChange: Function, write: boo
                 props.write ?
                     <textarea onChange={(e) => {
                         setValue(e.target.value)
-                    }} defaultValue={value} placeholder='Fill this text block with some text. Write your thoughts...' className='block rounded-lg placeholder:text-gray-500 p-2 border-0 w-full h-auto resize-none text-sm text-gray-900 bg-transparent border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-0 focus:outline-none focus:ring-0 no-scrollbar focus:border-0 text-justify peer' ref={textRef} />
+                    }} defaultValue={value} placeholder='Fill this text block with some text. Write your thoughts...' className='block rounded-lg placeholder:text-gray-500 p-2 border-0 w-full h-auto resize-none text-gray-900 bg-transparent border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-0 focus:outline-none focus:ring-0 no-scrollbar focus:border-0 text-justify peer' ref={textRef} />
                     :
-                    <p className='text-justify text-sm' style={{ whiteSpace: 'pre-wrap' }}>{value}</p>
+                    <p className='text-justify' style={{ whiteSpace: 'pre-wrap' }}>{value}</p>
             }
         </div>
     )

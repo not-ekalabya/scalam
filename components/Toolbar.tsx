@@ -31,14 +31,14 @@ export default function Toolbar(props: any) {
                             {
                                 colors.map((item: any, index: number) => {
                                     return (
-                                        <>
+                                        <div key={index}>
                                             <button onClick={
                                                 () => setExportStyle({ ...exportStyle, background: (item + '-800') })
                                             } className={`bg-${item}-800 w-full h-8 rounded-lg px-10 p-2`} ></button>
                                             <button onClick={
                                                 () => setExportStyle({ ...exportStyle, background: (item + '-900') })
                                             } className={`bg-${item}-900 w-full h-8 rounded-lg px-10 p-2`}></button>
-                                        </>
+                                        </div>
                                     )
                                 })
                             }

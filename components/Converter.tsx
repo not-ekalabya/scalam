@@ -7,8 +7,9 @@ import ImageSnippit from './design/ImageSnippit';
 import List from './layout/List';
 import TwoSegment from './layout/TwoSegment';
 import TitleSnippit from './design/TitleSnippit';
+import VideoSnippit from './design/VideoSnippit';
 
-export default function Converter (props: { data: any, write: boolean, nested: boolean } | any) {
+export default function Converter(props: { data: any, write: boolean, nested: boolean } | any) {
     const [data, setData] = React.useState(props.data)
     React.useEffect(() => {
         props.onChange ? props.onChange(data) : null
@@ -29,6 +30,10 @@ export default function Converter (props: { data: any, write: boolean, nested: b
                         case 'text-snippit':
                             return (<>
                                 <TextSnippit data={props.data} onChange={setData} write={props.write} nested={props.nested} />
+                            </>)
+                        case 'video-snippit':
+                            return (<>
+                                <VideoSnippit data={props.data} onChange={setData} write={props.write} nested={props.nested} />
                             </>)
                         case 'text-block':
                             return (<>

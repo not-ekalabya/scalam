@@ -16,7 +16,6 @@ export default function Compiler() {
     "title": "A begginer's guide to AI",
     "image": "https://i.pinimg.com/originals/a2/d9/01/a2d901aa209df00d993291024ddc6c2d.gif",
     "content": [
-      {},
       {
         "id": 1,
         "style": {
@@ -30,8 +29,8 @@ export default function Compiler() {
         "type": "two-segment",
         "value": [
           {
-            "type": "image-snippit",
-            "value": "https://cdn.dribbble.com/users/214929/screenshots/4967879/ai-loader-opt.gif"
+            "type": "video-snippit",
+            "value": "https://www.youtube.com/embed/jV1vkHv4zq8"
           },
           {
             "type": "list",
@@ -59,7 +58,7 @@ export default function Compiler() {
               "background": null,
               "style": "number"
             }
-          }
+          },
         ],
         "id": 2,
         "style": {
@@ -120,7 +119,7 @@ export default function Compiler() {
           }
         </div>
       </div>
-      <div className='mt-32'>
+      <div className='mt-20'>
         {
           data.content.map((item: any, index: number) => {
             return <div key={index} className='my-4'>

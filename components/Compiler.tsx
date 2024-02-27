@@ -74,7 +74,7 @@ export default function Compiler() {
 
   React.useEffect(() => {
     setData({ ...data, write: write })
-  }, [write])
+  })
 
   React.useEffect(() => {
     console.log(data)

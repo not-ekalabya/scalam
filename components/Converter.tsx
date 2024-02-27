@@ -8,7 +8,7 @@ import List from './layout/List';
 import TwoSegment from './layout/TwoSegment';
 import TitleSnippit from './design/TitleSnippit';
 
-export default function (props: { data: any, write: boolean, nested: boolean } | any) {
+export default function Converter (props: { data: any, write: boolean, nested: boolean } | any) {
     const [data, setData] = React.useState(props.data)
     React.useEffect(() => {
         props.onChange ? props.onChange(data) : null

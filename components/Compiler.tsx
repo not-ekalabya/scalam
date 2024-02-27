@@ -74,14 +74,10 @@ export default function Compiler() {
 
   React.useEffect(() => {
     setData({ ...data, write: write })
-  })
-
-  React.useEffect(() => {
-    console.log(data)
-  }, [data])
+  }, [write])
 
   return (
-    <div>
+    <div suppressHydrationWarning>
       {
         write ?
           <button onClick={() => {

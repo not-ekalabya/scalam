@@ -39,7 +39,7 @@ export default function List(props: { data: any, write: boolean, onChange: Funct
                         list.value.map((item: any, index: number) => {
                             return (
                                 item ?
-                                    <div className='flex items-center'>
+                                    <div key={index} className='flex items-center'>
                                         {
                                             list.style?.style !== 'none' ?
                                                 list.style?.style === 'number' ?

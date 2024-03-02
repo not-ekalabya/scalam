@@ -209,7 +209,7 @@ export default function Compiler() {
           {
             data.content.map((item: any, index: number) => {
               return (
-                <div className={`flex items-center my-1.5 ${currentPhase === index ? 'bg-blue-800' : 'bg-gray-900'
+                <div key={index} className={`flex items-center my-1.5 ${currentPhase === index ? 'bg-blue-800' : 'bg-gray-900'
                   } p-2 text-lg rounded-md w-full text-left text-white font-bold`}>
                   {
                     !write ?

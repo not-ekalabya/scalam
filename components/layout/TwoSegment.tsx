@@ -7,7 +7,7 @@ import Toolbar from '../Toolbar';
 export default function TwoSegment(props: { data: any, write: boolean, onChange: Function } | any) {
     const [list, setList] = React.useState<any>(props.data);
     React.useCallback(() => {
-        props.onChange(list)
+        if (props.write) props.onChange(list)
     }, [list])
     React.useEffect(() => {
         const style = list.style ? list.style : {

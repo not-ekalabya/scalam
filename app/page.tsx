@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import Link from 'next/link';
 import {
@@ -7,9 +8,22 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
+import SignIn from '@/components/SignIn';
+import { auth } from '@/firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Home() {
+
+    const [user, setUser] = React.useState<any>(null);
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUser(user);
+        } else {
+            setUser(null);
+        }
+    })
+
     return (
         <main className='flex flex-col m-4'>
 
@@ -31,9 +45,16 @@ export default function Home() {
 
                 </div>
 
-                <div className='flex items-center bg-gradient-to-br from-indigo-500 p-4 rounded-lg 2xl:w-2/5 lg:w-2/5 w-full ='>
-                    <img src="https://i.pinimg.com/originals/09/23/0d/09230d9ba74f02521084037a5c78564f.gif" className='w-32 h-32 rounded-full' alt="" />
-                    <p className='text-center w-full m-auto text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold'>Ekalabya Ghosh</p>
+                <div className='flex items-center bg-gradient-to-br from-indigo-500 p-4 rounded-lg 2xl:w-2/5 lg:w-2/5 w-full '>
+                    {
+                        auth.currentUser ?
+                            <React.Fragment>
+                                <img src={user.photoURL} className='w-32 h-32 rounded-full' alt="" />
+                                <p className='text-center w-full m-auto text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold'>{user.displayName}</p>
+                            </React.Fragment>
+                            :
+                            <SignIn />
+                    }
                 </div>
 
             </div>

@@ -45,7 +45,7 @@ export default function Home() {
 
                 </div>
 
-                <div className='flex items-center bg-gradient-to-br from-indigo-500 p-4 rounded-lg 2xl:w-2/5 lg:w-2/5 w-full '>
+                <div className={`flex items-center bg-gradient-to-br from-indigo-500 p-4 rounded-lg 2xl:w-2/5 lg:w-2/5 w-full ${auth.currentUser ? null : 'border-4 border-spacing-0 border-white'}`}>
                     {
                         auth.currentUser ?
                             <React.Fragment>
@@ -75,9 +75,6 @@ export default function Home() {
                                 <CardContent>
                                     <img className='w-full max-h-52 object-cover aspect-video' src="https://i.pinimg.com/originals/23/95/54/2395544bff0ddf8217c28c645cf604e5.gif" alt="Cover Image" />
                                 </CardContent>
-                                <CardFooter>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </CardFooter>
                             </Card>
                         </Link>
                         <Link href={'/'} className='lg:w-1/2 xl:w-1/2 w-full'>
@@ -89,9 +86,6 @@ export default function Home() {
                                 <CardContent>
                                     <img className='w-full max-h-52 object-cover aspect-video' src="https://i.pinimg.com/originals/2f/10/ce/2f10ce69b96c0611989308b0abc68e70.gif" alt="Cover Image" />
                                 </CardContent>
-                                <CardFooter>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                </CardFooter>
                             </Card>
                         </Link>
                     </div>

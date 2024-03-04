@@ -9,6 +9,6 @@ export default function SignIn() {
         console.log(user);
     }
     return (
-        <button onClick={signIn} >Sign In</button>
+        <button className='bg-indigo-500 hover:bg-indigo-700 text-white font-bold rounded-lg py-2 px-4 h-full text-xl w-full' onClick={signIn} >Sign In</button>
     );
 }

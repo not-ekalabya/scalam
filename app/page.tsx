@@ -65,7 +65,7 @@ export default function Home() {
                     <div className='bg-gray-900 p-4 rounded-lg text-2xl font-extrabold'>
                         <p className='flex items-center'>Projects<span className='mx-4 p-2 rounded-lg bg-gray-800 font-medium text-base'>coming soon</span></p>
                     </div>
-                    <div className='flex flex-col lg:flex-row xl:lg:flex-row 2xl:flex-row gap-4 mt-4 p-4 rounded-lg h-full bg-gray-900 text-2xl '>
+                    <div className='flex flex-col lg:flex-row xl:lg:flex-row 2xl:flex-row gap-4 mt-4 p-4 rounded-lg bg-gray-900 text-2xl '>
                         <Link className='lg:w-1/2 xl:w-1/2 w-full' href={'/'}>
                             <Card className='w-full'>
                                 <CardHeader>

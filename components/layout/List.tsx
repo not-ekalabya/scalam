@@ -7,9 +7,11 @@ import Toolbar from '../Toolbar';
 export default function List(props: { data: any, write: boolean, onChange: Function } | any) {
 
     const [list, setList] = React.useState<any>(props.data);
+
     React.useEffect(() => {
         props.onChange(list)
     }, [list])
+
 
     React.useEffect(() => {
         if (!list.style) {
@@ -49,7 +51,7 @@ export default function List(props: { data: any, write: boolean, onChange: Funct
                                             'block' : 'flex'
                                             } rounded-lg`} key={index}>
                                             {
-                                                list.style?.style === 'none' ?
+                                                list.style?.style !== 'none' ?
                                                     <div className={`mt-4 rounded-full h-fit w-fit ${list.style?.style !== 'none' ?
                                                         list.style?.style === 'number' ?
                                                             'bg-white text-black mt-4 m-4 px-2' : 'px-2' : null

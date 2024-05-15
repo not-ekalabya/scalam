@@ -33,7 +33,7 @@ export default function Home() {
                     <p className='text-3xl sm:text-3xl md:text-5xl lg:text-5xl font-extrabold'>Scalam Editor</p>
 
                     <div>
-                        <Link href='/editor'>
+                        <Link href='/project'>
                             <button className='flex justify-between items-center gap-2 w-full text-left p-4 mt-4 font-bold text-xl rounded-lg bg-red-600 hover:bg-red-800 transition-colors duration-300 ease-in-out text-white shadow-lg'>
                                 <p>Get Started</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -65,7 +65,7 @@ export default function Home() {
                     <div className='bg-gray-900 p-4 rounded-lg text-2xl font-extrabold'>
                         <p className='flex items-center'>Projects<span className='mx-4 p-2 rounded-lg bg-gray-800 font-medium text-base'>coming soon</span></p>
                     </div>
-                    <div className='flex gap-4 mt-4 p-4 rounded-lg h-full bg-gray-900 text-2xl'>
+                    <div className='flex flex-col lg:flex-row xl:lg:flex-row 2xl:flex-row gap-4 mt-4 p-4 rounded-lg h-full bg-gray-900 text-2xl '>
                         <Link className='lg:w-1/2 xl:w-1/2 w-full' href={'/'}>
                             <Card className='w-full'>
                                 <CardHeader>

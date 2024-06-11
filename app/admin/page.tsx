@@ -28,7 +28,7 @@ export default function Editor() {
                 "value": [
                   {
                     "type": "image-snippit",
-                    "value": "https://www.simpleimageresizer.com/_uploads/photos/098ce264/DP_1_350x350.png"
+                    "value": "https://i.ibb.co/9pmTjF6/DP-Resized.png"
                   },
                   {
                     "style": {

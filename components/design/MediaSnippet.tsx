@@ -1,9 +1,9 @@
 'use client'
 import * as React from 'react';
-import Video from './extensions/Video';
+import Media from './extensions/Media';
 import Toolbar from '../Toolbar';
 
-export default function VideoSnippit (props: { data: any, write: boolean, nested: boolean } | any) {
+export default function MediaSnippet (props: { data: any, write: boolean, nested: boolean } | any) {
 
   const [value, setValue] = React.useState(props.data.value);
   const [style, setStyle] = React.useState<any>(props.data.style ? props.data.style : {
@@ -13,7 +13,7 @@ export default function VideoSnippit (props: { data: any, write: boolean, nested
   React.useEffect(() => {
     const exportData = {
       id: props.data.id,
-      type: 'video-snippit',
+      type: 'media-snippit',
       style: style,
       value: value,
     }
@@ -26,7 +26,7 @@ export default function VideoSnippit (props: { data: any, write: boolean, nested
 
 
   return (
-    <div className={`bg-${style.background}`}>
+    <div className='h-full w-full'>
       {
         props.write ?
           <div>
@@ -38,10 +38,12 @@ export default function VideoSnippit (props: { data: any, write: boolean, nested
             }} />
           </div> : null
       }
-      <Video onChange={(event: any) => {
+      <div className='w-full flex justify-center h-full'>
+      <Media onChange={(event: any) => {
         setValue(event);
         console.log(event);
       }} value={value} write={props.write} />
+      </div>
     </div>
   )
 }

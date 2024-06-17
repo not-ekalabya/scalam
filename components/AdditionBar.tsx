@@ -20,12 +20,8 @@ export default function AdditionBar(props: { onChange: Function }) {
                 value: ''
             },
             {
-                type: 'image-snippit',
-                value: 'https://media.istockphoto.com/id/1055079680/vector/black-linear-photo-camera-like-no-image-available.jpg?s=612x612&w=0&k=20&c=P1DebpeMIAtXj_ZbVsKVvg-duuL0v9DlrOZUvPG6UJk='
-            },
-            {
-                type: "video-snippit",
-                value: `https://woodpecker.co/blog/app/uploads/2021/03/A-Guide-to-Personalized-Email-Using-Individual-Videos-and-GIFs-blog-15.21.56.gif`
+                type: "media-snippit",
+                value: ``
             },
             {
                 type: 'text-block',
@@ -33,10 +29,10 @@ export default function AdditionBar(props: { onChange: Function }) {
                 value: ''
             },
             {
-                type: 'image-block',
+                type: 'media-block',
                 title: '',
                 value: '',
-                image: ''
+                media: ''
             },
             {
                 type: 'list',
@@ -79,8 +75,12 @@ export default function AdditionBar(props: { onChange: Function }) {
 
     return (
         <Drawer>
-            <DrawerTrigger className='w-full'>
-                <button className='w-full mb-4 hover:bg-blue-700 bg-gray-900 p-2 rounded-lg mt-4'>Add Block</button>
+            <DrawerTrigger>
+                <button className='rounded-sm mb-4 p-2 tracking-wider bg-blue-gray-800/20 hover:bg-blue-gray-800/40 hover:text-blue-500'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                    </svg>
+                </button>
             </DrawerTrigger>
             <DrawerContent>
                 <div className='flex flex-wrap place-content-evenly mb-4 gap-4'>

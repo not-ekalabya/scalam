@@ -74,7 +74,7 @@ export default function Toolbar(props: any) {
                     : null
             }
             {
-                props.type === 'image-block' ?
+                props.type === 'media-block' ?
                     <>
                         <Select defaultValue={props.data.default} onValueChange={(event) => setExportStyle({ ...exportStyle, default: event })}>
                             <SelectTrigger>

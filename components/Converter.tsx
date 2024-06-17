@@ -1,13 +1,12 @@
 'use client'
 import * as React from 'react';
 import TextBlock from '@/components/design/TextBlock';
-import ImageBlock from './design/ImageBlock';
+import MediaBlock from './design/MediaBlock';
 import TextSnippit from './design/TextSnippit';
-import ImageSnippit from './design/ImageSnippit';
 import List from './layout/List';
 import TwoSegment from './layout/TwoSegment';
 import TitleSnippit from './design/TitleSnippit';
-import VideoSnippit from './design/VideoSnippit';
+import MediaSnippet from './design/MediaSnippet';
 
 export default function Converter(props: { data: any, write: boolean, nested: boolean } | any) {
     const [data, setData] = React.useState(props.data)
@@ -28,25 +27,21 @@ export default function Converter(props: { data: any, write: boolean, nested: bo
                             return (<>
                                 <TitleSnippit data={props.data} onChange={setData} write={props.write} nested={props.nested} />
                             </>)
-                        case 'image-snippit':
-                            return (<>
-                                <ImageSnippit data={props.data} onChange={setData} write={props.write} nested={props.nested} />
-                            </>)
                         case 'text-snippit':
                             return (<>
                                 <TextSnippit data={props.data} onChange={setData} write={props.write} nested={props.nested} />
                             </>)
-                        case 'video-snippit':
+                        case 'media-snippit':
                             return (<>
-                                <VideoSnippit data={props.data} onChange={setData} write={props.write} nested={props.nested} />
+                                <MediaSnippet data={props.data} onChange={setData} write={props.write} nested={props.nested} />
                             </>)
                         case 'text-block':
                             return (<>
                                 <TextBlock data={props.data} write={props.write} onChange={setData} nested={props.nested} />
                             </>)
-                        case 'image-block':
+                        case 'media-block':
                             return (<>
-                                <ImageBlock data={props.data} onChange={setData} write={props.write} nested={props.nested} />
+                                <MediaBlock data={props.data} onChange={setData} write={props.write} nested={props.nested} />
                             </>)
                         case 'list':
                             return (

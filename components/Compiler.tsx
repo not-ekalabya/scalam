@@ -125,18 +125,7 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
                         </div>
                       );
                     })
-                    : (
-                      <div className='m-4 flex text-white/40'>
-                        <p>
-                          NOTE-
-                        </p>
-                        <p>
-                          Express yourself with your <span className='font-bold italic'>content</span>. Click <button className='text-red-500 underline' onClick={() => {
-                            permission ? setWrite(true) : null
-                          }}>here</button> to add some content. You can change between "edit" and "preview" mode from the top-right navbar
-                        </p>
-                      </div>
-                    )
+                    : null
                 }
               </div>
               <div>

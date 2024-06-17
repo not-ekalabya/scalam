@@ -5,13 +5,13 @@ import { getFirestore, initializeFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAYjUr1m79-YaYGga7or8ZpauT85Su86OM",
-  authDomain: "scalam-fire.firebaseapp.com",
-  projectId: "scalam-fire",
-  storageBucket: "scalam-fire.appspot.com",
-  messagingSenderId: "791843387602",
-  appId: "1:791843387602:web:aaf1e54ea9478b285b550b",
-  measurementId: "G-N6E2HXZKL8"
+  apiKey: "###",
+  authDomain: "###",
+  projectId: "###",
+  storageBucket: "###",
+  messagingSenderId: "###",
+  appId: "###",
+  measurementId: "###",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -20,4 +20,7 @@ initializeFirestore(app, {
 })
 export const auth = getAuth(app)
 export const authProvider = new GoogleAuthProvider()
+<<<<<<< HEAD
 export const db = getFirestore(app)
+=======
+>>>>>>> 3645811cc20d50b0096a0778fad5ade045659ab6

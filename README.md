@@ -25,7 +25,7 @@ Built with love by Ekalabya Ghosh (not-ekalabya on GitHub)
 
 P.S. Aspiring MIT applicant here!   Wish me luck!
 
-Want to contribute? We love collaborators!  See CONTRIBUTING.md for the details.
+Want to contribute? We love collaborators!
 
 Follow scalam on GitHub and stay tuned for updates!
 

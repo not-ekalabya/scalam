@@ -50,49 +50,52 @@ const Page = () => {
             <div className='flex flex-col flex-1 py-16'>
                 <div>
                     <p className='text-3xl font-bold'>Your Pages</p>
-                </div>
-                <div className='flex flex-1 flex-row flex-wrap py-3 '>
-                    {
+                    </div>
+                    <div className='lg:flex xl:flex flex-1 flex-row flex-wrap py-3'>
+                        {
                         user ?
-                            <div className='sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
-                                {
-                                    userProjects?.map((project: any) => {
-                                        return <div className='flex justify-between bg-gray-900 rounded-sm p-4 h-24 shadow-2xl hover:text-red-400'>
-                                            <div>
-                                                <Link href={'/pages/' + project.id} key={project.id}>
-                                                    <div className='text-xl font-bold'>
-                                                        {project.title}
+                            <React.Fragment>
+                                <div className='flex w-full gap-4 flex-row flex-wrap'>
+                                    {
+                                        userProjects?.map((project: any, index: number) => {
+                                            return (
+                                                <div key={index} className='flex justify-between h-24 bg-gray-900 rounded-sm p-4 shadow-2xl hover:text-red-400'>
+                                                    <div>
+                                                        <Link href={'/pages/' + project.id} key={project.id}>
+                                                            <div className='text-xl font-bold'>
+                                                                {project.title}
+                                                            </div>
+                                                            <div>
+                                                                <p className='text-sm text-white/50'> ID - {project.id} </p>
+                                                            </div>
+                                                        </Link>
                                                     </div>
                                                     <div>
-                                                        <p className='text-sm text-white/50'> ID - {project.id} </p>
+                                                        <button className='rounded-sm' onClick={async () => {
+                                                            try {
+                                                                await copy(`https://scalamhub.com/pages/${project.id}`);
+                                                            } catch (error) {
+                                                                console.error('Failed to copy text to clipboard', error);
+                                                            }
+                                                        }}>
+                                                            <LinkIcon className='w-5 h-5' />
+                                                        </button>
                                                     </div>
-                                                </Link>
-                                            </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                    <Link href={'/pages/new'}>
+                                        <div className='flex items-top justify-center rounded-sm  p-4 shadow-2xl bg-gray-900 hover:text-red-400'>
                                             <div>
-                                                <button className='rounded-sm' onClick={async () => {
-                                                    try {
-                                                        await copy(`https://scalamhub.com/pages/${project.id}`);
-                                                    } catch (error) {
-                                                        console.error('Failed to copy text to clipboard', error);
-                                                    }
-                                                }}>
-                                                    <LinkIcon className='w-5 h-5' />
-                                                </button>
+                                                <PlusIcon className='w-10 h-10' />
                                             </div>
                                         </div>
-                                    })
-
-                                }
-                                <Link href={'/pages/new'}>
-                                <div className='flex items-center justify-center rounded-sm p-4 h-24 shadow-2xl bg-gray-900 hover:text-red-400'>
-                                    <div>
-                                            <PlusIcon className='w-10 h-10' />  
-                                    </div>
+                                    </Link>
                                 </div>
-                                </Link>
-                            </div>
+                            </React.Fragment>
                             :
-                            <div className='flex flex-1 items-center justify-center'>
+                            <div className='flex flex-1 items-top justify-center'>
                                 <div>
                                     <p className='text-xl font-bold text-center'>Login to see your projects 😀</p>
                                 </div>

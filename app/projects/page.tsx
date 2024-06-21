@@ -7,15 +7,12 @@ import { db } from '@/firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
 import Link from 'next/link';
 import copy from 'clipboard-copy';
-import {
-    PlusIcon,
-    Link2 as LinkIcon
-} from 'lucide-react';
 
 const Page = () => {
 
     const [user, setUser] = React.useState<any>(null);
     const [userProjects, setUserProjects] = React.useState<any>(null);
+    const [render, setRendeder] = React.useState<boolean>(false);
 
     const initData = async () => {
 
@@ -31,7 +28,11 @@ const Page = () => {
                     const project = await getDoc(doc(db, "pages", projectList[i]));
                     userProjectArray.push(project.data());
                     setUserProjects(userProjectArray);
+                    if (i === projectList.length - 1) {
+                        setRendeder(true);
+                    }
                 }
+
 
             } else {
                 setUser(null);
@@ -47,55 +48,47 @@ const Page = () => {
     return (
         <div className='flex h-screen w-screen flex-col p-4'>
             <Navbar />
-            <div className='flex flex-col flex-1 py-16'>
+            <div className='flex flex-col flex-1 py-2'>
                 <div>
-                    <p className='text-3xl font-bold'>Your Pages</p>
-                    </div>
-                    <div className='lg:flex xl:flex flex-1 flex-row flex-wrap py-3'>
-                        {
-                        user ?
-                            <React.Fragment>
-                                <div className='flex w-full gap-4 flex-row flex-wrap'>
-                                    {
-                                        userProjects?.map((project: any, index: number) => {
-                                            return (
-                                                <div key={index} className='flex justify-between h-24 bg-gray-900 rounded-sm p-4 shadow-2xl hover:text-red-400'>
-                                                    <div>
-                                                        <Link href={'/pages/' + project.id} key={project.id}>
-                                                            <div className='text-xl font-bold'>
-                                                                {project.title}
-                                                            </div>
-                                                            <div>
-                                                                <p className='text-sm text-white/50'> ID - {project.id} </p>
-                                                            </div>
-                                                        </Link>
-                                                    </div>
-                                                    <div>
-                                                        <button className='rounded-sm' onClick={async () => {
-                                                            try {
-                                                                await copy(`https://scalamhub.com/pages/${project.id}`);
-                                                            } catch (error) {
-                                                                console.error('Failed to copy text to clipboard', error);
-                                                            }
-                                                        }}>
-                                                            <LinkIcon className='w-5 h-5' />
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                    <Link href={'/pages/new'}>
-                                        <div className='flex items-top justify-center rounded-sm  p-4 shadow-2xl bg-gray-900 hover:text-red-400'>
+                    <p className='text-4xl font-bold'>Your Projects</p>
+                </div>
+                <div className='flex flex-1 flex-row flex-wrap py-2 '>
+                    {
+                        user && render ?
+                            <div className='sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
+                                {
+                                    userProjects?.map((project: any) => {
+                                        return <div className='flex justify-between bg-white/5 rounded-sm p-4 my-4'>
                                             <div>
-                                                <PlusIcon className='w-10 h-10' />
+                                                <Link href={'/pages/' + project.id} key={project.id}>
+                                                    <div className='text-xl font-bold'>
+                                                        {project.title}
+                                                    </div>
+                                                    <div>
+                                                        <p className='text-sm text-white/50'> ID - {project.id} </p>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                            <div>
+                                                <button className='rounded-sm' onClick={async () => {
+                                                    try {
+                                                        await copy(`https://scalamhub.com/pages/${project.id}`);
+                                                    } catch (error) {
+                                                        console.error('Failed to copy text to clipboard', error);
+                                                    }
+                                                }}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-link rounded-sm" viewBox="0 0 16 16">
+                                                        <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+                                                        <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" />
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </div>
-                                    </Link>
-                                </div>
-                            </React.Fragment>
+                                    })
+                                }
+                            </div>
                             :
-                            <div className='flex flex-1 items-top justify-center'>
+                            <div className='flex flex-1 items-center justify-center'>
                                 <div>
                                     <p className='text-xl font-bold text-center'>Login to see your projects 😀</p>
                                 </div>

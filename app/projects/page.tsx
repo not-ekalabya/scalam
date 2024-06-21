@@ -56,8 +56,8 @@ const Page = () => {
                         user ?
                             <div className='sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
                                 {
-                                    userProjects?.map((project: any) => {
-                                        return <div className='flex justify-between bg-gray-900 rounded-sm p-4 h-24 shadow-2xl hover:text-red-400'>
+                                    userProjects?.map((index: number, project: any) => {
+                                        return <div key={index} className='flex justify-between bg-gray-900 rounded-sm p-4 h-24 shadow-2xl hover:text-red-400'>
                                             <div>
                                                 <Link href={'/pages/' + project.id} key={project.id}>
                                                     <div className='text-xl font-bold'>

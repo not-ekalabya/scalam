@@ -85,13 +85,6 @@ const Page = () => {
                                             )
                                         })
                                     }
-                                    <Link href={'/pages/new'}>
-                                        <div className='flex items-top justify-center rounded-sm  p-4 shadow-2xl bg-gray-900 hover:text-red-400'>
-                                            <div>
-                                                <PlusIcon className='w-10 h-10' />
-                                            </div>
-                                        </div>
-                                    </Link>
                                 </div>
                             </React.Fragment>
                             :

@@ -18,7 +18,7 @@ export default function Toolbar(props: any) {
 
     return (
         <div className='flex gap-4 bg-gray-900/20 rounded-t-lg p-2'>
-            {
+            {/* {
                 props.type !== 'list' && props.type !== 'two-segment' ?
                     <Select>
                         <SelectTrigger>
@@ -44,7 +44,7 @@ export default function Toolbar(props: any) {
                             }
                         </SelectContent>
                     </Select> : null
-            }
+            } */}
             {
                 props.type === 'list' ?
                     <Select defaultValue='none' onValueChange={(event) => setExportStyle({ ...exportStyle, style: event })}>

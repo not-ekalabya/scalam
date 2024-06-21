@@ -41,31 +41,29 @@ export default function List(props: { data: any, write: boolean, onChange: Funct
                             }} type='list' />
                         </div> : null
                 }
-                <div className={`flex flex-col gap-4 rounded-lg shadow-2xl`}>
+                <div className={`flex flex-col rounded-lg shadow-2xl`}>
                     {
                         list.value.map((item: any, index: number) => {
                             return (
                                 item ?
                                     <div className='rounded-lg' key={index}>
-                                        <div className={`${list.style?.style === 'number' ?
-                                            'block' : 'flex'
-                                            } rounded-lg`} key={index}>
+                                        <div className={`flex rounded-lg`} key={index}>
                                             {
                                                 list.style?.style !== 'none' ?
-                                                    <div className={`mt-4 rounded-full h-fit w-fit ${list.style?.style !== 'none' ?
+                                                    <div className={`rounded-full h-fit w-fit mt-5 ${list.style?.style !== 'none' ?
                                                         list.style?.style === 'number' ?
-                                                            'bg-white text-black mt-4 m-4 px-2' : 'px-2' : null
+                                                            '' : '' : null
                                                         }`}>
                                                         {
                                                             list.style?.style !== 'none' ?
                                                                 list.style?.style === 'number' ?
-                                                                    <p className='text-2xl font-bold'>{index + 1}</p>
-                                                                    : <div className='h-4 w-4   bg-white mt-4 rounded-full'></div>
+                                                                    <p className='text-md font-bold'>{index + 1}</p>
+                                                                    : <div className='h-2 w-2   bg-white rounded-full'></div>
                                                                 : null
                                                         }
                                                     </div> : null
                                             }
-                                            <div className='flex-1 mt-2'>
+                                            <div className='flex-1'>
                                                 <Converter key={index} data={item} write={props.write} nested={true} onChange={(event: any) => {
                                                     const updatedList = list.value;
                                                     event.value === null ?

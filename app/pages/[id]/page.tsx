@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/dialog"
 import Link from 'next/link';
 import copy from 'clipboard-copy';
+import {
+  Link2 as LinkIcon
+} from 'lucide-react';
 
 
 
@@ -29,20 +32,49 @@ export default function Editor() {
   const defaultData = {
     "title": "Let's Scalam it ...",
     "write": false,
-    "image": "https://i.pinimg.com/originals/a2/d9/01/a2d901aa209df00d993291024ddc6c2d.gif",
+    "image": "https://i.pinimg.com/564x/87/cb/4b/87cb4b51aae4577195f24e61e349762e.jpg",
     "content": [
-      {
-        "type": "media-block",
-        "style": {
-          "background": null,
-          "default": "row"
-        },
-        "title": "Here's a quick tutorial... 🚀",
-        "value": "Scalam let's you express yourself. Create what makes \"you\", \"you\". Here are some quick steps to get started 😎 -\n \n1. Click \"edit\" from the top right corner to start creating.\n2. You will spot a \"➕\" icon below this block. Click it to add new elements.\n3. Got your new creation? Let's give it some character by changing it's theme from the toolbar at it's top 🎨\n4. Lastly, make it useful  by adding some relevant text or an image. \n5. Let's Click \"save\" from the top-right and share your creation with the world with a single link.\n\nCredits to Kurzgesagt for this beautiful GIF ( plz don't sue us 😥 ) ->",
-        "media": "https://media4.giphy.com/media/OcbCi4OcPuqPTHCLR0/source.gif"
-      }
-    ]
-  }
+        {
+            "type": "two-segment",
+            "value": [
+                {
+                    "type": "list",
+                    "value": [
+                        {
+                            "style": {
+                                "background": null
+                            },
+                            "type": "text-block",
+                            "title": "An Introduction",
+                            "value": "<p><strong>Learning is the best human invention</strong>. That's why we have fire, iPhones, Google and everything cool that exists.  <strong>Scalam Hub</strong> is your one-stop platform to make learning <strong>effective and fun</strong>, for your employees or student, with <s>presentetions</s> <strong>Scalam Pages 😉</strong></p>"
+                        },
+                        {
+                            "style": {
+                                "background": null
+                            },
+                            "type": "text-block",
+                            "title": "What is coming...",
+                            "value": "<p>Here's what you can expect from future Scalam,</p><ul><li><p><strong>AI is coming</strong> with the goal of creating a course within <strong>under 60 seconds. </strong></p></li><li><p>More customization options</p></li><li><p>A course marketplace</p></li><li><p>New Collaboration features</p><p>Of course we are <strong>open to suggestions</strong> 😀</p><p></p></li></ul><p></p>"
+                        }
+                    ],
+                    "style": {
+                        "background": null,
+                        "style": "number"
+                    }
+                },
+                {
+                    "type": "media-block",
+                    "style": {
+                        "background": null
+                    },
+                    "title": "How to get started ...",
+                    "value": "<p>Let's have a quick start and figure stuff out along the way.</p><ol class=\"\"><li><p>On the top is the Navbar. Here you will find useful commands like, Edit, Save or Delete. <strong>Click on Edit</strong> to start modifying the page.</p></li><li><p>Use the \" + \" sign to add new blocks. This is where creativity shines ✨</p></li><li><p>Make your page functional by filling the block in with some content. Make tweaks and <strong>don't forget media</strong> ( Ex - photos, videos ) makes your page 10x engaging.</p></li><li><p>Click on Save from the Navbar to launch your page on the web and <strong>share it with a single link</strong>.</p></li></ol>",
+                    "media": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/5eeea355389655.59822ff824b72.gif"
+                }
+            ]
+        }
+    ],
+}
 
   const [data, setData] = React.useState<any>(defaultData)
 
@@ -69,20 +101,20 @@ export default function Editor() {
   }
 
   React.useEffect(() => {
-    initData();
-  }, [])
-
-  React.useEffect(() => {
     console.log(data);
   }, [data])
+
+  React.useEffect(() => {
+    initData();
+  }, [])
 
   const saveFunc = async () => {
 
     const page = await getDoc(pageRef)
-    console.log(data);
 
     if (page.exists()) {
       setDoc(pageRef, { ...data, id: id })
+      console.log(data)
       setSaveDialog(true);
     } else {
       if (user.uid !== undefined) { // Only add if user is defined
@@ -148,18 +180,15 @@ export default function Editor() {
             <div className='flex items-center justify-center'>
               <button onClick={async () => {
                 try {
-                  await copy(`https://scalam.vercel.app/pages/${id}`);
+                  await copy(`https://scalamhub.com/pages/${id}`);
                 } catch (error) {
                   console.error('Failed to copy text to clipboard', error);
                 }
                 setSaveDialog(false);
               }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" className="bi bi-link mr-2 rounded-sm bg-gray-800 p-1" viewBox="0 0 16 16">
-                  <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
-                  <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" />
-                </svg>
+                <LinkIcon className='w-4 h-4 mr-4' />
               </button>
-              <Link className='text-blue-500 underline' href={`https://scalam.vercel.app/pages/${id}`}>https://scalam.vercel.app/pages/{id}</Link>
+              <Link className='text-blue-500 underline' href={`https://scalamhub.com/pages/${id}`}>https://scalamhub.com/pages/{id}</Link>
             </div>
           </DialogDescription>
         </DialogContent>

@@ -16,7 +16,7 @@ export default function SignIn() {
             } else {
                 console.log('user added');
                 await setDoc(doc(db, 'user-info', user.uid), {
-                    "user-name": user.displayName,
+                    "userName": user.displayName,
                     "email": user.email,
                     "pages": []
                 });

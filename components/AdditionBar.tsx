@@ -32,7 +32,7 @@ export default function AdditionBar(props: { onChange: Function }) {
                 type: 'media-block',
                 title: '',
                 value: '',
-                media: ''
+                media: 'https://mir-s3-cdn-cf.behance.net/project_modules/hd/5eeea355389655.59822ff824b72.gif'
             },
             {
                 type: 'list',

@@ -8,14 +8,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { auth } from '@/firebase/config';
-import { onAuthStateChanged } from 'firebase/auth';
+import { db } from '@/firebase/config';
+import { getDoc, setDoc, deleteDoc, doc } from 'firebase/firestore';
 
 
 export default function Compiler(props: { onSave: Function, onDelete: Function, data: any, user: any, onChange: Function }) {
 
   const [data, setData] = React.useState(props.data);
   const [user, setUser] = React.useState<any>(props.user);
+  const [author, setAuthor] = React.useState<any>(null);
 
   const [write, setWrite] = React.useState<boolean>(false);
   const [permission, setPermission] = React.useState<boolean>(false);
@@ -35,19 +36,29 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
     }
   }, []);
 
+  const initAuthor = async () => {
+    const authorDataRef = getDoc(doc(db, "user-info", "RsyUFBbYVUNtih6a3FLH9YS5J8h1"))
+    const authorData: any =  (await authorDataRef).data()
+    setAuthor(authorData.userName)
+  }
+
   React.useEffect(() => {
     props.onChange(data)
   }, [data])
 
+  React.useEffect(() => {
+    initAuthor()
+  }, [])
+
   return (
     <>
-      <div className="h-screen w-full" suppressHydrationWarning>
+      <div className="flex flex-col h-screen w-full" suppressHydrationWarning>
 
         {
 
           permission ?
 
-            <div className='flex items-center gap-2 justify-end p-2 w-full mb-16 bg-gray-900'>
+            <div className='flex items-center gap-2 justify-end p-2 w-full bg-gray-900'>
               <div>
                 {
                   write ?
@@ -78,7 +89,7 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
               </div>
             </div> : null
         }
-        <div className='lg:mx-32 xl:32 2xl:32 mx-[4%]'>
+        <div className='flex-1 lg:px-32 xl:px-32 2xl:px-32 px-[4%] pt-16 overflow-auto'>
           <div className="relative">
             {
               write ?
@@ -125,18 +136,7 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
                         </div>
                       );
                     })
-                    : (
-                      <div className='m-4 flex text-white/40'>
-                        <p>
-                          NOTE-
-                        </p>
-                        <p>
-                          Express yourself with your <span className='font-bold italic'>content</span>. Click <button className='text-red-500 underline' onClick={() => {
-                            permission ? setWrite(true) : null
-                          }}>here</button> to add some content. You can change between "edit" and "preview" mode from the top-right navbar
-                        </p>
-                      </div>
-                    )
+                    : null
                 }
               </div>
               <div>
@@ -150,7 +150,7 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
                 }
               </div>
               <div className='pb-4 pl-4'>
-                <p>Author : <span>{user?.displayName}</span></p>
+                <p>Author : <span>{author}</span></p>
               </div>
             </div>
           </div>

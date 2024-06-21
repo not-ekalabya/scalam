@@ -7,6 +7,10 @@ import { db } from '@/firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
 import Link from 'next/link';
 import copy from 'clipboard-copy';
+import {
+    Link2 as LinkIcon,
+    PlusIcon as PlusIcon
+} from 'lucide-react'
 
 const Page = () => {
 
@@ -52,23 +56,21 @@ const Page = () => {
                 <div>
                     <p className='text-4xl font-bold'>Your Projects</p>
                 </div>
-                <div className='flex flex-1 flex-row flex-wrap py-2 '>
+                <div className='flex flex-1 py-2 '>
                     {
                         user && render ?
-                            <div className='sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
+                            <div className='flex flex-col flex-1 gap-4 sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
                                 {
-                                    userProjects?.map((project: any) => {
-                                        return <div className='flex justify-between bg-white/5 rounded-sm p-4 my-4'>
-                                            <div>
-                                                <Link href={'/pages/' + project.id} key={project.id}>
-                                                    <div className='text-xl font-bold'>
-                                                        {project.title}
-                                                    </div>
-                                                    <div>
-                                                        <p className='text-sm text-white/50'> ID - {project.id} </p>
-                                                    </div>
-                                                </Link>
-                                            </div>
+                                    userProjects?.map((project: any, index: number) => {
+                                        return <div key={index} className='flex justify-between hover:text-red-500 bg-white/5 rounded-sm p-4'>
+                                            <Link href={'/pages/' + project.id} key={project.id}>
+                                                <div className='text-xl font-bold'>
+                                                    {project.title}
+                                                </div>
+                                                <div>
+                                                    <p className='text-sm text-white/50'> ID - {project.id} </p>
+                                                </div>
+                                            </Link>
                                             <div>
                                                 <button className='rounded-sm' onClick={async () => {
                                                     try {
@@ -77,15 +79,17 @@ const Page = () => {
                                                         console.error('Failed to copy text to clipboard', error);
                                                     }
                                                 }}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-link rounded-sm" viewBox="0 0 16 16">
-                                                        <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9q-.13 0-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
-                                                        <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z" />
-                                                    </svg>
+                                                    <LinkIcon className='w-4 h-4' />
                                                 </button>
                                             </div>
                                         </div>
                                     })
                                 }
+                                <Link href={'/pages/new'}>
+                                    <div className='w-full flex justify-center bg-white/5 rounded-sm p-4 hover:bg-gray-950'>
+                                        <PlusIcon className='w-10 h-10' />
+                                    </div>
+                                </Link>
                             </div>
                             :
                             <div className='flex flex-1 items-center justify-center'>

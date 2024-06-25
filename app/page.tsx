@@ -18,7 +18,7 @@ export default function Home() {
                         <p className='text-3xl font-extrabold flex font-mono'>or create your <span className='ml-2.5 text-blue-500'>own.</span> </p>
                         <div className='h-8 w-full my-4'>
                             <Link href={'/pages/new'}>
-                                <button className='w-full text-left font-bold rounded-lg py-1 px-3 h-full tracking-wider bg-red-500 hover:bg-transparent hover:text-red-500 '>Get Started</button>
+                                <button className='w-full text-left font-bold rounded-lg py-1 px-3 h-full tracking-wider bg-red-500 hover:bg-red-800'>Get Started</button>
                             </Link>
                         </div>
 

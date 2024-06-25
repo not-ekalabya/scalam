@@ -38,7 +38,7 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
 
   const initAuthor = async () => {
     if (data.author) {
-      setData(author)
+      setAuthor(author)
     } else {
       const authorDataRef = getDoc(doc(db, "user-info", user.uid))
       const authorData: any = (await authorDataRef).data()

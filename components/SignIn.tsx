@@ -4,27 +4,27 @@ import { signInWithPopup } from 'firebase/auth';
 import { getDoc, setDoc, doc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
 
+export const signIn = async () => {
+    await signInWithPopup(auth, authProvider);
+    const user = await auth.currentUser;
+    if (user) {
+        console.log((await (getDoc(doc(db, 'user-info', user.uid)))).exists());
+        if ((await (getDoc(doc(db, 'user-info', user.uid)))).exists()) {
+            console.log('user found');
+        } else {
+            console.log('user added');
+            await setDoc(doc(db, 'user-info', user.uid), {
+                "userName": user.displayName,
+                "email": user.email,
+                "pages": []
+            });
+        }
+    } else {
+        console.log('early exit');
+    }
+}
 
 export default function SignIn() {
-    const signIn = async () => {
-        await signInWithPopup(auth, authProvider);
-        const user = await auth.currentUser;
-        if (user) {
-            console.log((await (getDoc(doc(db, 'user-info', user.uid)))).exists());
-            if ((await (getDoc(doc(db, 'user-info', user.uid)))).exists()) {
-                console.log('user found');
-            } else {
-                console.log('user added');
-                await setDoc(doc(db, 'user-info', user.uid), {
-                    "userName": user.displayName,
-                    "email": user.email,
-                    "pages": []
-                });
-            }
-        } else {
-            console.log('early exit');
-        }
-    }
     return (
         <div className='flex flex-row justify-end items-center w-full'>
             <div>

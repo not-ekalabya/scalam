@@ -24,6 +24,7 @@
     "@tiptap/pm": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
+    "@vercel/edge-config": "^1.2.0",
     "autoprefixer": "^10.4.17",
     "bootstrap-icons": "^1.11.3",
     "class-variance-authority": "^0.7.0",

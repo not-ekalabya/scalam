@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { db } from '@/firebase/config';
-import { getDoc, setDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 
 
 export default function Compiler(props: { onSave: Function, onDelete: Function, data: any, user: any, onChange: Function }) {
@@ -37,9 +37,13 @@ export default function Compiler(props: { onSave: Function, onDelete: Function, 
   }, []);
 
   const initAuthor = async () => {
-    const authorDataRef = getDoc(doc(db, "user-info", "RsyUFBbYVUNtih6a3FLH9YS5J8h1"))
-    const authorData: any =  (await authorDataRef).data()
-    setAuthor(authorData.userName)
+    if (data.author) {
+      setData(author)
+    } else {
+      const authorDataRef = getDoc(doc(db, "user-info", user.uid))
+      const authorData: any = (await authorDataRef).data()
+      setAuthor(authorData.userName)
+    }
   }
 
   React.useEffect(() => {

@@ -35,7 +35,7 @@ export default function Navbar() {
                     <p>Home</p>
                 </Link>
                 <Link className='hover:text-red-400' href={'/projects'}>
-                    <p>Your Pages</p>
+                    <p>Workspace</p>
                 </Link>
             </div>
             <div>

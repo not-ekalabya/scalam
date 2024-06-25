@@ -53,48 +53,52 @@ const Page = () => {
         <div className='flex h-screen w-screen flex-col p-4'>
             <Navbar />
             <div className='flex flex-col flex-1 py-2'>
-                <div>
-                    <p className='text-4xl font-bold'>Your Projects</p>
-                </div>
                 <div className='flex flex-1 py-2 '>
                     {
-                        user && render ?
-                            <div className='flex flex-col flex-1 gap-4 sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
-                                {
-                                    userProjects?.map((project: any, index: number) => {
-                                        return <div key={index} className='flex justify-between hover:text-red-500 bg-white/5 rounded-sm p-4'>
-                                            <Link href={'/pages/' + project.id} key={project.id}>
-                                                <div className='text-xl font-bold'>
-                                                    {project.title}
-                                                </div>
+                        render ?
+                            user ?
+                                <div className='flex flex-col flex-1 gap-4 sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3'>
+                                    {
+                                        userProjects?.map((project: any, index: number) => {
+                                            return <div key={index} className='flex justify-between hover:text-red-500 bg-white/5 rounded-sm p-4'>
+                                                <Link href={'/pages/' + project.id} key={project.id}>
+                                                    <div className='text-xl font-bold'>
+                                                        {project.title}
+                                                    </div>
+                                                    <div>
+                                                        <p className='text-sm text-white/50'> ID - {project.id} </p>
+                                                    </div>
+                                                </Link>
                                                 <div>
-                                                    <p className='text-sm text-white/50'> ID - {project.id} </p>
+                                                    <button className='rounded-sm' onClick={async () => {
+                                                        try {
+                                                            await copy(`https://scalamhub.com/pages/${project.id}`);
+                                                        } catch (error) {
+                                                            console.error('Failed to copy text to clipboard', error);
+                                                        }
+                                                    }}>
+                                                        <LinkIcon className='w-4 h-4' />
+                                                    </button>
                                                 </div>
-                                            </Link>
-                                            <div>
-                                                <button className='rounded-sm' onClick={async () => {
-                                                    try {
-                                                        await copy(`https://scalamhub.com/pages/${project.id}`);
-                                                    } catch (error) {
-                                                        console.error('Failed to copy text to clipboard', error);
-                                                    }
-                                                }}>
-                                                    <LinkIcon className='w-4 h-4' />
-                                                </button>
                                             </div>
+                                        })
+                                    }
+                                    <Link href={'/pages/new'}>
+                                        <div className='w-full flex justify-center bg-white/5 rounded-sm p-1'>
+                                            <PlusIcon className='w-8 h-8' />
                                         </div>
-                                    })
-                                }
-                                <Link href={'/pages/new'}>
-                                    <div className='w-full flex justify-center bg-white/5 rounded-sm p-4 hover:bg-gray-950'>
-                                        <PlusIcon className='w-10 h-10' />
+                                    </Link>
+                                </div>
+                                :
+                                <div className='flex flex-1 items-center justify-center'>
+                                    <div>
+                                        <p className='text-xl font-bold text-center'>Login to see your projects 😀</p>
                                     </div>
-                                </Link>
-                            </div>
+                                </div>
                             :
                             <div className='flex flex-1 items-center justify-center'>
                                 <div>
-                                    <p className='text-xl font-bold text-center'>Login to see your projects 😀</p>
+                                    <p className='text-xl font-bold text-center'>Loading...</p>
                                 </div>
                             </div>
                     }

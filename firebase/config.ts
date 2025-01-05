@@ -5,12 +5,12 @@ import { getFirestore, initializeFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAYjUr1m79-YaYGga7or8ZpauT85Su86OM",
+  apiKey: "##############################",
   authDomain: "scalam-fire.firebaseapp.com",
   projectId: "scalam-fire",
   storageBucket: "scalam-fire.appspot.com",
   messagingSenderId: "791843387602",
-  appId: "1:791843387602:web:aaf1e54ea9478b285b550b",
+  appId: "###############################",
   measurementId: "G-N6E2HXZKL8"
 };
 
